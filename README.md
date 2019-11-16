@@ -28,6 +28,7 @@ There are 4 components in this angular app, namely:
 3. Elements area
 4. Preview (Big)
 5. Preview (Small)  
+
 These are layed out in a grid format using css.
 ### File object structure
 ```
