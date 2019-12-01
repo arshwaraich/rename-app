@@ -1,12 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { FilenameBuilderComponent } from './filename-builder/filename-builder.component';
-import { ElementsAreaComponent } from './elements-area/elements-area.component';
-import { PreviewSmallComponent } from './preview-small/preview-small.component';
 import { PreviewBigComponent } from './preview-big/preview-big.component';
 
 @NgModule({
@@ -14,13 +13,13 @@ import { PreviewBigComponent } from './preview-big/preview-big.component';
     AppComponent,
     SideMenuComponent,
     FilenameBuilderComponent,
-    ElementsAreaComponent,
-    PreviewSmallComponent,
-    PreviewBigComponent
+    PreviewBigComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DragDropModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
