@@ -1,1 +1,48 @@
-<p>filename-builder works!</p>
+
+<div class="flex-container">
+
+    <div id="BuilderBackground">
+    
+        <div cdkDropList 
+             #initialList="cdkDropList"
+             cdkDropListOrientation="horizontal" 
+             [cdkDropListData]="largeName"
+             class="filenameBuilder" 
+             (cdkDropListDropped)="drop($event)">
+                <div class="example-box" *ngFor="let item of largeName; let i = index" [attr.data-index]="i" cdkDrag>{{item}}
+                    <p id="x" on-click="removeOriginal(i)">&#x2718;</p>
+                </div>
+                
+        </div>
+    </div>
+    
+    <div id = "BuilderBackground">
+        
+        <div 
+            cdkDropList
+            #stringsList="cdkDropList"
+            cdkDropListOrientation="horizontal" 
+            [cdkDropListData]="Strings"
+            [cdkDropListConnectedTo]="[initialList]"
+            class="filenameBuilder"
+            (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let item of Strings; let i = index" [attr.data-index]="i" cdkDrag>{{item}}
+                <p id="x" on-click="remove(i)">&#x2718;</p>
+            </div>
+        </div>
+    
+    
+        <div id="string">
+            <p>Input a string: </p> &nbsp;
+            <input type="text" [(ngModel)]="str"> &nbsp; <button on-click="onSubmit()">Create String</button>
+            &nbsp; <button on-click="reset()">Reset</button>
+        </div>
+    
+    </div>
+</div>
+
+
+
+
+
+

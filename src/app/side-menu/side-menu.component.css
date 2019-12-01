@@ -11,9 +11,8 @@
 }
 
 .expanded {
-    /*450/1920 1536*/
-    width: 360px;
     padding: 32px;
+    height: calc(100% - 64px);
 }
 
 .nav-header > h1 {
