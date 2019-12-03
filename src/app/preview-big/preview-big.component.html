@@ -1,1 +1,21 @@
-<p>preview-big works!</p>
+<div class="flex-container">
+
+    <div class="flex-column" id="flex-column1">
+        <div class="column-item column-header" >Old</div>
+
+        <div *ngFor="let f of ogFiles; let i = index">
+            <div class="column-item">{{f.name}}.{{f.ext}}</div>
+        </div>
+
+    </div>
+
+    <div class="flex-column" id="flex-column2">
+        <div class="column-item column-header column-item2">New</div>
+
+        <div *ngFor="let f of newFiles; let i = index">
+            <div class="column-item column-item2">{{f.name}}.{{f.ext}}</div>
+        </div>
+
+    </div>
+
+</div>
