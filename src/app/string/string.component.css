@@ -62,7 +62,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 200px;
+  height: 300px;
+  overflow-x: auto;
 }
 
 .filenameBuilder {
@@ -101,6 +102,7 @@
   color: white;
   z-index: 1;
   width: 138px;
+  height: 80px;
   cursor: default;
 }
 
@@ -117,7 +119,9 @@
 }
 
 .example-box:hover>.example-box-tooltip {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .filenameBuilder .example-box>.example-box-tooltip::after {

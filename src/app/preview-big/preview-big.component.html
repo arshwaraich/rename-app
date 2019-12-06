@@ -2,7 +2,7 @@
 
   <div class="container-header">
     <div class="header-icons">
-      <mat-icon (click)="goBack()">arrow_back_ios</mat-icon>
+      <mat-icon>arrow_back_ios</mat-icon>
     </div>
     <div class="header-text">Filename Builder</div>
   </div>
@@ -10,8 +10,10 @@
       <div class="flex-column" id="flex-column1">
         <div class="column-item column-header column-item1">Old</div>
         <hr/>
-        <div *ngFor="let f of ogFiles; let i = index">
-          <div class="column-item column-item1">{{f.name}}.{{f.ext}}</div>
+        <div class="overflow">
+          <div *ngFor="let f of ogFiles; let i = index">
+            <div class="column-item column-item1">{{f.name}}.{{f.ext}}</div>
+          </div>
         </div>
 
       </div>
@@ -19,10 +21,11 @@
       <div class="flex-column" id="flex-column2">
         <div class="column-item column-header column-item2">New</div>
         <hr/>
-        <div *ngFor="let f of newFiles; let i = index">
-          <div class="column-item column-item2">{{f.name}}.{{f.ext}}</div>
+        <div class="overflow">
+          <div *ngFor="let f of newFiles; let i = index">
+            <div class="column-item column-item2">{{f.name}}.{{f.ext}}</div>
+          </div>
         </div>
-
       </div>
   </div>
 </div>

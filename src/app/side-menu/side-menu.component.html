@@ -3,12 +3,12 @@
     <h1>Rename</h1>
   </div>
   <ul class="nav-items">
-    <li><a class="navbar-brand" routerLink="/string">String</a></li>
-    <li><a routerLink="/fileData"> File Data </a></li>
-    <li><a routerLink="/gps-info"> GPS Information </a></li>
-    <li><a routerLink="/date"> Date </a></li>
-    <li><a routerLink="/incrementNumber"> Incrementing Number </a></li>
-    <li><a routerLink="/originalName"> Original Name </a></li>
+    <li><a [ngClass]="{'active':router.url === '/string'}" routerLink="/string">String</a></li>
+    <li><a [ngClass]="{'active':router.url === '/fileData'}" routerLink="/fileData"> File Data </a></li>
+    <li><a [ngClass]="{'active':router.url === '/gps-info'}" routerLink="/gps-info"> GPS Information </a></li>
+    <li><a [ngClass]="{'active':router.url === '/date'}" routerLink="/date"> Date </a></li>
+    <li><a [ngClass]="{'active':router.url === '/incrementNumber'}" routerLink="/incrementNumber"> Incrementing Number </a></li>
+    <li><a [ngClass]="{'active':router.url === '/originalName'}" routerLink="/originalName"> Original Name </a></li>
   </ul>
   <div class="nav-footer">
     <a routerLink="/preview">

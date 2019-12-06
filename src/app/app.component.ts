@@ -25,7 +25,7 @@ export class AppComponent {
         lastModifiedTimeStamp: '1558710195' // unixtimestamp
       },
       {
-          name: 'grocery list',
+          name: 'growlist',
           ext: 'txt',
           geoLocation: null,
           size: {
@@ -47,7 +47,7 @@ export class AppComponent {
           lastModifiedTimeStamp: '1545696000'
       },
       {
-          name: 'school note 201909',
+          name: 'note1',
           ext: 'docx',
           geoLocation: null,
           size: {
@@ -58,7 +58,7 @@ export class AppComponent {
           lastModifiedTimeStamp: '1569788482'
       },
       {
-          name: 'school note 201910',
+          name: 'note2',
           ext: 'docx',
           geoLocation: null,
           size: {
@@ -83,7 +83,9 @@ export class AppComponent {
           lastModifiedTimeStamp: '1571998812'
       }];
 
+    if (!sessionStorage.getItem('newfiles')) {
+        sessionStorage.setItem('newfiles', JSON.stringify(ogFiles));
+    }
     sessionStorage.setItem('files', JSON.stringify(ogFiles));
-    sessionStorage.setItem('newfiles', JSON.stringify(ogFiles));
   }
 }
