@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { Router } from '@angular/router';
 import {File} from '../classes/file';
 import { InvokeMethodExpr } from '@angular/compiler';
 
