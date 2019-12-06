@@ -14,6 +14,8 @@ import { GpsInfoComponent } from './gps-info/gps-info.component';
 import { DateComponent } from './date/date.component';
 import { IncrementNumberComponent } from './increment-number/increment-number.component';
 import { OriginalNameComponent } from './original-name/original-name.component';
+import { AngeryMaterialModule } from './material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { OriginalNameComponent } from './original-name/original-name.component';
     BrowserModule,
     AppRoutingModule,
     DragDropModule,
-    FormsModule
+    FormsModule,
+    AngeryMaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
