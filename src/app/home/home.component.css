@@ -50,10 +50,12 @@
 
 .header-icons>.active {
   color: #525252;
+  cursor: pointer;
 }
 
 .header-icons>.inactive {
   color: #C4C4C4;
+  cursor: not-allowed;
 }
 
 .builder-body {
