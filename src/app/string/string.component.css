@@ -85,6 +85,13 @@
   position: relative;
 }
 
+.filenameBuilder>.example-box-foreign {
+  background: white !important;
+  border-radius: 1000px !important;
+  color: #636bff !important;
+  border: 6px solid #636bff !important;
+}
+
 .example-box>.example-box-tooltip {
   display: none;
   position: absolute;
@@ -113,7 +120,7 @@
   display: block;
 }
 
-.example-box>.example-box-tooltip::after {
+.filenameBuilder .example-box>.example-box-tooltip::after {
   content: "";
   position: absolute;
   top: 100%;
