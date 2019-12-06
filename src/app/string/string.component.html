@@ -10,7 +10,7 @@
     <div class="builder-body">
       <div cdkDropList #initialList="cdkDropList" cdkDropListOrientation="horizontal" [cdkDropListData]="largeName"
         class="filenameBuilder" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of largeName; let i = index" [attr.data-index]="i" cdkDrag>
+        <div cdkDragDisabled class="example-box" *ngFor="let item of largeName; let i = index" [attr.data-index]="i" cdkDrag>
           {{item}}
           <span class="example-box-tooltip">
             <mat-icon (click)="removeOriginal(i)">delete</mat-icon>
@@ -43,13 +43,14 @@
     </div>
 
     <div class="builder-body">
-      <div cdkDropList #stringsList="cdkDropList" cdkDropListOrientation="horizontal" [cdkDropListData]="Strings"
-        [cdkDropListConnectedTo]="[initialList]" class="filenameBuilder" (cdkDropListDropped)="drop($event)">
+      <div *ngIf="Strings[0]" cdkDropList #stringsList="cdkDropList" cdkDropListOrientation="horizontal"
+        [cdkDropListData]="Strings" [cdkDropListConnectedTo]="[initialList]" class="filenameBuilder"
+        (cdkDropListDropped)="drop($event)">
         <div class="example-box dragged-box" *ngFor="let item of Strings; let i = index" [attr.data-index]="i" cdkDrag>
           "{{item}}"
         </div>
-      </div>  
-      <input maxlength="10" type="text" [(ngModel)]="Strings[0]">
+      </div>
+      <input placeholder="Enter text" maxlength="10" type="text" [(ngModel)]="Strings[0]">
       <mat-icon>info</mat-icon>
     </div>
 
