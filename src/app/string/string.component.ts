@@ -111,8 +111,7 @@ export class StringComponent implements OnInit {
 
   // arrays of mock objects
   filesOld = [this.file1, this.file2, this.file3];
-  filesNew = [this.file1new, this.file2new, this.file3new];
-  // filesNew = [];
+  filesNew = [];
 
   // Chars to display in the original container in drag and drop
   largeName = [];
@@ -165,33 +164,23 @@ export class StringComponent implements OnInit {
   }
 
 
-  removeChar(index) {
+  removeStr(index, size) {
     let tempIndex = 0;
     for (const file of this.filesNew) {
       if (index > file.name.length - 1) {
         if (file.name.length > 1) {
           tempIndex = file.name.length - 1;
-          file.name = file.name.slice(0, tempIndex).concat(file.name.slice(tempIndex + 1, file.name.length));
+          file.name = file.name.slice(0, tempIndex).concat(file.name.slice(tempIndex + size, file.name.length));
         }
       } else {
         if (file.name.length > 1) {
           tempIndex = index;
-          file.name = file.name.slice(0, tempIndex).concat(file.name.slice(tempIndex + 1, file.name.length));
+          file.name = file.name.slice(0, tempIndex).concat(file.name.slice(tempIndex + size, file.name.length));
         }
       }
     }
     for (const file of this.filesNew) {
       console.log(file.name);
-    }
-
-  }
-
-  reset() {
-    this.Strings = [];
-    this.str = '';
-    this.largeName = this.largeNameConst;
-    for (let i = 0; i < this.filesOld.length; i++) {
-      this.filesNew[i] = this.filesOld[i];
     }
 
   }
@@ -204,8 +193,8 @@ export class StringComponent implements OnInit {
   // remove from the original filename
   removeOriginal(index) {
     // calling updateName to update the names of actual files
+    this.removeStr(index, this.largeName[index].length);
     this.largeName = this.largeName.slice(0, index).concat(this.largeName.slice(index + 1, this.largeName.length));
-    this.removeChar(index);
   }
 
   drop(event: CdkDragDrop < string[] > ) {
@@ -216,17 +205,12 @@ export class StringComponent implements OnInit {
       // retrieve the data that needs to be transfered and store in temp
       const tempPreviousData = event.previousContainer.data[event.previousIndex];
       console.log(tempPreviousData);
-      // loop through the data and split it into chars
-      for (let i = 0; i < tempPreviousData.length; i++) {
-        event.previousContainer.data[event.previousIndex] = tempPreviousData.charAt(i);
-        console.log(event.previousContainer.data[i]);
-
-        transferArrayItem(event.previousContainer.data,
-          event.container.data,
-          event.previousIndex + i, // previous index
-          event.currentIndex + i); // current index
-      }
+      this.largeName.splice(event.currentIndex, 0, tempPreviousData);
     }
+  }
+
+  checkItemInLargename(index) {
+    return this.largeNameConst.indexOf(this.largeName[index]) <= -1;
   }
 
 }

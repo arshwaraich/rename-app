@@ -10,7 +10,7 @@
     <div class="builder-body">
       <div cdkDropList #initialList="cdkDropList" cdkDropListOrientation="horizontal" [cdkDropListData]="largeName"
         class="filenameBuilder" (cdkDropListDropped)="drop($event)">
-        <div cdkDragDisabled class="example-box" *ngFor="let item of largeName; let i = index" [attr.data-index]="i" cdkDrag>
+        <div [ngClass]="{'example-box': true, 'example-box-foreign': checkItemInLargename(i)}" *ngFor="let item of largeName; let i = index" [attr.data-index]="i" cdkDrag cdkDragDisabled>
           {{item}}
           <span class="example-box-tooltip">
             <mat-icon (click)="removeOriginal(i)">delete</mat-icon>
