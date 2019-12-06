@@ -1,42 +1,99 @@
 @font-face {
-    font-family: 'Dubai-regular';
-    src: url('../../assets/fonts/Dubai/DubaiW23-Regular.ttf');
-    font-weight: 400;
+  font-family: 'Dubai-regular';
+  src: url('../../assets/fonts/Dubai/DubaiW23-Regular.ttf');
+  font-weight: 400;
 }
 
-.flex-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 100%;
-    align-items: stretch;
-    height: 100%;
-  }
+@font-face {
+  font-family: 'Dubai-light';
+  src: url('../../assets/fonts/Dubai/DubaiW23-Light.ttf');
+  font-weight: 200;
+}
+
+.container {
+  margin: 49px;
+  background-color: white;
+  border-radius: 25px;
+  height: calc(100% - 98px);
+}
+
+.container-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  padding: 18px 31px 0px;
+}
+
+.header-text {
+  font-family: 'Dubai-light';
+  font-weight: lighter;
+  font-size: 39px;
+  line-height: 66px;
+}
+
+.header-icons>mat-icon {
+  font-size: 30px;
+  width: 30px;
+  padding: 0px 20px;
+  height: 30px;
+  color: #525252;
+}
+
+.container-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 0px 37px 71px;
+  height: calc(100% - 142px);
+}
+
 .flex-column {
-    margin: 5%;
-    padding: 3%;
-    width: 30%;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    
-    border-radius: 25px;
-
-    line-height: 5vw;
-    font-family: 'Dubai-regular';
-
+  padding: 26px 66px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 25px;
+  font-family: 'Dubai-regular';
 }
+
+.flex-column > hr {
+  width: 200px;
+  position: relative;
+  left: -10px;
+  height: 5px;
+  border: 0px;
+  margin: 0px;
+  border-radius: 1000px;
+}
+
+#flex-column1 > hr {
+  background-color: #636BFF;
+}
+
 #flex-column2 {
-    background: rgba(99, 107, 255, 0.87);
+  background: #636BFF;
+}
+
+#flex-column2 > hr {
+  background-color: #FFFFFF;
 }
 
 .column-header {
-    font-weight: bold;
-    text-decoration: underline;
-    font-size:20px;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.column-item {
+  padding: 10px 0px;
+  font-size: 32px;
+}
+
+.column-item1 {
+  color: #525252;
 }
 
 .column-item2 {
-    color: white;
+  color: white;
 }

@@ -49,14 +49,20 @@
 }
 
 
-.nav-footer > button {
+.nav-footer button {
     background: white;
     border: none;
     border-radius: 100px;
     color: #636BFF;
 }
 
-#btn-preview {
+.nav-footer a {
+    text-decoration: none;
+}
+
+.btn-preview {
+    text-decoration: none;
+    cursor: pointer;
     margin: auto;
     display: block;
     width: 319px;
