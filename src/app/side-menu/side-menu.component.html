@@ -3,16 +3,18 @@
     <h1>Rename</h1>
   </div>
   <ul class="nav-items">
-    <li><a class="navbar-brand" href="/string">String</a></li>
-    <li><a href="/fileData"> File Data </a></li>
-    <li><a href="/gps-info"> GPS Information </a></li>
-    <li><a href="/date"> Date </a></li>
-    <li><a href="/incrementNumber"> Incrementing Number </a></li>
-    <li><a href="/originalName"> Original Name </a></li>
+    <li><a class="navbar-brand" routerLink="/string">String</a></li>
+    <li><a routerLink="/fileData"> File Data </a></li>
+    <li><a routerLink="/gps-info"> GPS Information </a></li>
+    <li><a routerLink="/date"> Date </a></li>
+    <li><a routerLink="/incrementNumber"> Incrementing Number </a></li>
+    <li><a routerLink="/originalName"> Original Name </a></li>
   </ul>
   <div class="nav-footer">
-    <button id="btn-preview" *ngIf="router.url !== '/preview'">Preview</button>
-    <button id="btn-preview" *ngIf="router.url === '/preview'">Save</button>
+    <a routerLink="/preview">
+      <button class="btn-preview" *ngIf="router.url !== '/preview'">Preview</button>
+    </a>
+    <button class="btn-preview" *ngIf="router.url === '/preview'">Save</button>
     <!--Add icon here later-->
   </div>
 </div>

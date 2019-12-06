@@ -10,8 +10,8 @@ export class PreviewBigComponent implements OnInit {
     ogFiles: File[];
     newFiles: File[];
 
-    constructor() { 
-        //* hard-coded original file
+    constructor() {
+        // * hard-coded original file
         this.ogFiles = [{
             name: 'apple',
             ext: 'jpg',
@@ -84,16 +84,16 @@ export class PreviewBigComponent implements OnInit {
             owner: 'E',
             lastModifiedTimeStamp: '1571998812'
         }];
-        
-        sessionStorage.setItem("oldFileNames", JSON.stringify(this.ogFiles));
+
+        sessionStorage.setItem('oldFileNames', JSON.stringify(this.ogFiles));
     }
 
     ngOnInit() {
         this.getNewFileNames();
     }
 
-    getNewFileNames() : void {
-        this.newFiles = JSON.parse(sessionStorage.getItem("newFileNames"));
+    getNewFileNames(): void {
+        this.newFiles = JSON.parse(sessionStorage.getItem('newFileNames'));
         if (this.newFiles == null) {
             this.newFiles = this.ogFiles;
         }
