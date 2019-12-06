@@ -13,7 +13,7 @@ import { PreviewBigComponent } from './preview-big/preview-big.component';
 
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', component: HomeComponent}, // home
+  {path: '', pathMatch: 'full', redirectTo: '/preview'},
   {path: 'string', component: StringComponent},
   {path: 'fileData', component: FileDataComponent},
   {path: 'gps-info', component: GpsInfoComponent},
