@@ -14,13 +14,13 @@ import { PreviewBigComponent } from './preview-big/preview-big.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', component: HomeComponent}, // home
-  {path: 'String', component: StringComponent},
-  {path: 'FileData', component: FileDataComponent},
-  {path: 'GPSinfo', component: GpsInfoComponent},
-  {path: 'Date', component: DateComponent},
-  {path: 'IncrementNumber', component: IncrementNumberComponent},
-  {path: 'OriginalName', component: OriginalNameComponent},
-  {path: 'Preview', component: PreviewBigComponent}
+  {path: 'string', component: StringComponent},
+  {path: 'fileData', component: FileDataComponent},
+  {path: 'gps-info', component: GpsInfoComponent},
+  {path: 'date', component: DateComponent},
+  {path: 'incrementNumber', component: IncrementNumberComponent},
+  {path: 'originalName', component: OriginalNameComponent},
+  {path: 'preview', component: PreviewBigComponent}
 ];
 
 @NgModule({
