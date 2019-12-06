@@ -15,102 +15,8 @@ import {
 })
 export class StringComponent implements OnInit {
 
-  // file: File;
-
-  // Mock objects for filesOld
-  file1 = {
-    name: 'RomanKantor',
-    ext: 'txt',
-    geoLocation: {
-      longitude: '15 10.324',
-      latitude: '30 -23.456'
-    },
-    size: {
-      value: 15,
-      unit: 'kb'
-    },
-    owner: 'roman',
-    lastModifiedTimeStamp: 'Wed 01-01-2019 6:00'
-  };
-
-  file2 = {
-    name: 'ArshSingh',
-    ext: 'txt',
-    geoLocation: {
-      longitude: '15 10.324',
-      latitude: '30 -23.456'
-    },
-    size: {
-      value: 30,
-      unit: 'mb'
-    },
-    owner: 'arsh',
-    lastModifiedTimeStamp: 'Thu 01-01-2019 6:00'
-  };
-
-  file3 = {
-    name: 'ChaoyiWu',
-    ext: 'txt',
-    geoLocation: {
-      longitude: '15 10.324',
-      latitude: '30 -23.456'
-    },
-    size: {
-      value: 20,
-      unit: 'kb'
-    },
-    owner: 'chaoyi',
-    lastModifiedTimeStamp: 'Fri 10-01-2019 6:00'
-  };
-
-  // Mock Objects for filesNew
-  file1new = {
-    name: 'RomanKantor',
-    ext: 'txt',
-    geoLocation: {
-      longitude: '15 10.324',
-      latitude: '30 -23.456'
-    },
-    size: {
-      value: 15,
-      unit: 'kb'
-    },
-    owner: 'roman',
-    lastModifiedTimeStamp: 'Wed 01-01-2019 6:00'
-  };
-
-  file2new = {
-    name: 'ArshSingh',
-    ext: 'txt',
-    geoLocation: {
-      longitude: '15 10.324',
-      latitude: '30 -23.456'
-    },
-    size: {
-      value: 30,
-      unit: 'mb'
-    },
-    owner: 'arsh',
-    lastModifiedTimeStamp: 'Thu 01-01-2019 6:00'
-  };
-
-  file3new = {
-    name: 'ChaoyiWu',
-    ext: 'txt',
-    geoLocation: {
-      longitude: '15 10.324',
-      latitude: '30 -23.456'
-    },
-    size: {
-      value: 20,
-      unit: 'kb'
-    },
-    owner: 'chaoyi',
-    lastModifiedTimeStamp: 'Fri 10-01-2019 6:00'
-  };
-
   // arrays of mock objects
-  filesOld = [this.file1, this.file2, this.file3];
+  filesOld = [];
   filesNew = [];
 
   // Chars to display in the original container in drag and drop
@@ -137,6 +43,8 @@ export class StringComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.filesOld = JSON.parse(sessionStorage.getItem('newFileNames'));
+    console.log(this.filesOld);
     if (this.filesNew.length === 0) {
       for (let i = 0; i < this.filesOld.length; i++) {
         this.filesNew[i] = this.filesOld[i];

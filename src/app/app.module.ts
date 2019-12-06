@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { FilenameBuilderComponent } from './filename-builder/filename-builder.component';
 import { PreviewBigComponent } from './preview-big/preview-big.component';
-import { HomeComponent } from './home/home.component';
 import { StringComponent } from './string/string.component';
 import { FileDataComponent } from './file-data/file-data.component';
 import { GpsInfoComponent } from './gps-info/gps-info.component';
@@ -24,7 +23,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SideMenuComponent,
     FilenameBuilderComponent,
     PreviewBigComponent,
-    HomeComponent,
     StringComponent,
     FileDataComponent,
     GpsInfoComponent,
