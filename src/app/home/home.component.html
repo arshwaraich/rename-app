@@ -1,1 +1,37 @@
-<p>home works!</p>
+<div class="flex-container">
+  <div class="BuilderBackground">
+    <div class="builder-header">
+      <div class="header-text">Filename Builder</div>
+      <div class="header-icons">
+        <mat-icon class="active">undo</mat-icon>
+        <mat-icon class="inactive">redo</mat-icon>
+      </div>
+    </div>
+    <div class="builder-body">
+      <div cdkDropList #initialList="cdkDropList" cdkDropListOrientation="horizontal" [cdkDropListData]="largeName"
+        class="filenameBuilder" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of largeName; let i = index" [attr.data-index]="i" cdkDrag>
+          {{item}}
+          <span class="example-box-tooltip">
+            <mat-icon>delete</mat-icon>
+          </span>
+          <!--<p id="x" on-click="removeOriginal(i)">&#x2718;</p>-->
+        </div>
+      </div>
+    </div>
+    <div class="builder-footer">
+      <div class="footer-icons">
+        <mat-icon>info</mat-icon>
+        <span class="footer-icons-tooltip">
+          Drag and drop elements between
+          characters to build new filename.
+          Click on elements for more
+          options.
+          This is a sample filename which
+          is equal in size to the largest
+          filename
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
