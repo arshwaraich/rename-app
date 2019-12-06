@@ -43,7 +43,7 @@
     padding-bottom: 33px;
 }
 
-.nav-items a:hover {
+.nav-items a:hover, .nav-items>li>.active {
     color: white;
     font-weight: bold;
 }

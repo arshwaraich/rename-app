@@ -34,6 +34,7 @@
 
 .header-icons>mat-icon {
   font-size: 30px;
+  cursor: not-allowed;
   width: 30px;
   padding: 0px 20px;
   height: 30px;
@@ -96,4 +97,8 @@
 
 .column-item2 {
   color: white;
+}
+
+.overflow {
+  overflow: auto;
 }

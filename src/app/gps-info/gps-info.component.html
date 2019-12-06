@@ -1,2 +1,57 @@
-<p>GPS Data</p>
+<div class="flex-container">
+  <div class="BuilderBackground">
+    <div class="builder-header">
+      <div class="header-text">Filename Builder</div>
+      <div class="header-icons">
+        <mat-icon class="active">undo</mat-icon>
+        <mat-icon class="inactive">redo</mat-icon>
+      </div>
+    </div>
+    <div class="builder-body">
+      <div cdkDropList #initialList="cdkDropList" cdkDropListOrientation="horizontal" [cdkDropListData]="largeName"
+        class="filenameBuilder" (cdkDropListDropped)="drop($event)">
+        <div [ngClass]="{'example-box': true, 'example-box-foreign': isItemInStorage(i)}"
+          *ngFor="let item of largeName; let i = index" [attr.data-index]="i" cdkDrag cdkDragDisabled>
+          {{item}}
+          <span class="example-box-tooltip">
+            <mat-icon style="cursor: not-allowed;">delete</mat-icon>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="builder-footer">
+      <div class="footer-icons">
+        <mat-icon>info</mat-icon>
+        <span class="footer-icons-tooltip">
+          Drag and drop elements between
+          characters to build new filename.
+          Click on elements for more
+          options.
+          This is a sample filename which
+          is equal in size to the largest
+          filename
+        </span>
+      </div>
+    </div>
+  </div>
 
+  <div class="BuilderBackground DragArea">
+    <div class="builder-header">
+      <div class="header-text">GPS Data</div>
+      <div class="header-icons">
+        <mat-icon>info</mat-icon>
+      </div>
+    </div>
+
+    <div class="builder-body">
+      <div *ngIf="Strings[0]" cdkDropList #stringsList="cdkDropList" cdkDropListOrientation="horizontal"
+        [cdkDropListData]="Strings" [cdkDropListConnectedTo]="[initialList]" class="filenameBuilder"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box dragged-box" *ngFor="let item of Strings; let i = index" [attr.data-index]="i" cdkDrag>
+          "{{item}}"
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

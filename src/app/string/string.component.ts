@@ -21,7 +21,6 @@ export class StringComponent implements OnInit {
 
   // Chars to display in the original container in drag and drop
   largeName = [];
-  largeNameConst = [];
 
   // Chars to display in the potential strings container in drag and drop
   Strings = [];
@@ -30,6 +29,7 @@ export class StringComponent implements OnInit {
   // look for largest name in the old filesname list
   // go through that name and put into the array letter by letter
   largestName() {
+    this.largeName = [];
     let largestFileName = this.filesOld[0].name;
     for (const file of this.filesOld) {
       if (largestFileName.length < file.name.length) {
@@ -38,19 +38,22 @@ export class StringComponent implements OnInit {
     }
     for (const char of largestFileName) {
       this.largeName.push(char);
-      this.largeNameConst.push(char);
     }
   }
 
   ngOnInit() {
-    this.filesOld = JSON.parse(sessionStorage.getItem('newFileNames'));
+    this.filesOld = JSON.parse(sessionStorage.getItem('newfiles'));
     console.log(this.filesOld);
     if (this.filesNew.length === 0) {
       for (let i = 0; i < this.filesOld.length; i++) {
         this.filesNew[i] = this.filesOld[i];
       }
     }
-    this.largestName();
+    this.largeName = JSON.parse(sessionStorage.getItem('largeName'));
+    if (!this.largeName) {
+      this.largestName();
+      sessionStorage.setItem('largeName', JSON.stringify(this.largeName));
+    }
   }
 
 
@@ -69,6 +72,7 @@ export class StringComponent implements OnInit {
       file.name = fullString;
       console.log(file.name);
     }
+    sessionStorage.setItem('newfiles', JSON.stringify(this.filesNew));
   }
 
 
@@ -93,18 +97,6 @@ export class StringComponent implements OnInit {
 
   }
 
-  // remove from the strings array
-  remove(index) {
-    this.Strings = this.Strings.slice(0, index).concat(this.Strings.slice(index + 1, this.Strings.length));
-  }
-
-  // remove from the original filename
-  removeOriginal(index) {
-    // calling updateName to update the names of actual files
-    this.removeStr(index, this.largeName[index].length);
-    this.largeName = this.largeName.slice(0, index).concat(this.largeName.slice(index + 1, this.largeName.length));
-  }
-
   drop(event: CdkDragDrop < string[] > ) {
     if (event.previousContainer === event.container) {
       // Do nothing
@@ -112,13 +104,20 @@ export class StringComponent implements OnInit {
       this.updateNamesWithString(event.previousContainer.data, event.previousIndex, event.currentIndex);
       // retrieve the data that needs to be transfered and store in temp
       const tempPreviousData = event.previousContainer.data[event.previousIndex];
+      sessionStorage.setItem(tempPreviousData, JSON.stringify(
+        {
+          value: tempPreviousData
+        }
+      ));
       console.log(tempPreviousData);
       this.largeName.splice(event.currentIndex, 0, tempPreviousData);
+      sessionStorage.setItem('largeName', JSON.stringify(this.largeName));
     }
   }
 
-  checkItemInLargename(index) {
-    return this.largeNameConst.indexOf(this.largeName[index]) <= -1;
+  isItemInStorage(index) {
+    const val = sessionStorage.getItem(this.largeName[index]);
+    return val !== null;
   }
 
 }
