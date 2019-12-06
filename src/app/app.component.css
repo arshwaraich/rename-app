@@ -1,15 +1,16 @@
 .parent {
+  height: 1080px;
+  background-color: #F3F3F3;
   display: flex;
-  height: 100%;
+  flex-direction: row;
 }
 
 .div1{
-  height: 100%;
-  flex-basis: 30%;
+  height: 1080px;
+  width: 453px;
 }
 
 .div2 {
-  height: 100%;
-  flex-basis: 70%;
+  height: 1080px;
   overflow-y: auto;
 }
