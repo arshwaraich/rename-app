@@ -35,11 +35,11 @@
   color: #6E3bff;
 }
 
-.popup>p {
+.popup p {
   color: #525252;
 }
 
-.popup>button {
+.popup button {
   background: #6e3bff;
   border: 0px;
   padding: 10px 15px;
@@ -49,6 +49,6 @@
   cursor: pointer;
 }
 
-.popup>button:disabled {
+.popup button:disabled {
   background-color: gray;
 }

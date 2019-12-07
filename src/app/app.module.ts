@@ -15,7 +15,7 @@ import { IncrementNumberComponent } from './increment-number/increment-number.co
 import { OriginalNameComponent } from './original-name/original-name.component';
 import { AngeryMaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { DeviceDetectorModule } from 'ngx-device-detector';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DragDropModule,
     FormsModule,
     AngeryMaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DeviceDetectorModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
