@@ -87,8 +87,28 @@ export class AppComponent {
           lastModifiedTimeStamp: '1571998812'
       }];
 
+    let largeName = [];
+    let largestFileName = ogFiles[0].name;
+    for (const file of ogFiles) {
+      if (largestFileName.length < file.name.length) {
+        largestFileName = file.name;
+      }
+    }
+    for (const char of largestFileName) {
+      largeName.push(char);
+    }
+
+    let historyfiles = [];
+    historyfiles.push({
+        files: ogFiles,
+        largeName
+    });
+
     if (!sessionStorage.getItem('newfiles')) {
         sessionStorage.setItem('newfiles', JSON.stringify(ogFiles));
+        sessionStorage.setItem('largeName', JSON.stringify(largeName));
+        sessionStorage.setItem('HISTORYFILESCURR', JSON.stringify(historyfiles.length - 1));
+        sessionStorage.setItem('historyfiles', JSON.stringify(historyfiles));
     }
     sessionStorage.setItem('files', JSON.stringify(ogFiles));
   }

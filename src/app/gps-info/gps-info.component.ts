@@ -11,6 +11,8 @@ export class GpsInfoComponent implements OnInit {
   // arrays of mock objects
   filesOld = [];
   filesNew = [];
+  historyfiles = [];
+  curr = 0;
 
   // Chars to display in the original container in drag and drop
   largeName = [];
@@ -43,12 +45,9 @@ export class GpsInfoComponent implements OnInit {
       }
     }
     this.largeName = JSON.parse(sessionStorage.getItem('largeName'));
-    if (!this.largeName) {
-      this.largestName();
-      sessionStorage.setItem('largeName', JSON.stringify(this.largeName));
-    }
+    this.historyfiles = JSON.parse(sessionStorage.getItem('historyfiles'));
+    this.curr = JSON.parse(sessionStorage.getItem('HISTORYFILESCURR'));
   }
-
 
   updateNamesWithString(newString, indexOld, indexNew) {
     for (const file of this.filesNew) {
@@ -99,7 +98,6 @@ export class GpsInfoComponent implements OnInit {
         console.log(file.name);
       }
     }
-    sessionStorage.setItem('newfiles', JSON.stringify(this.filesNew));
   }
 
 
@@ -138,7 +136,25 @@ export class GpsInfoComponent implements OnInit {
       ));
       console.log(tempPreviousData);
       this.largeName.splice(event.currentIndex, 0, tempPreviousData);
+
+      if ((this.historyfiles.length - 1) === this.curr) {
+        this.historyfiles.push({
+          files: this.filesNew,
+          largeName: this.largeName
+        });
+      } else {
+        this.historyfiles = this.historyfiles.splice(this.curr + 1);
+        this.historyfiles.push({
+          files: this.filesNew,
+          largeName: this.largeName
+        });
+        this.curr = this.historyfiles.length - 1;
+      }
+      sessionStorage.setItem('newfiles', JSON.stringify(this.filesNew));
       sessionStorage.setItem('largeName', JSON.stringify(this.largeName));
+      sessionStorage.setItem('HISTORYFILESCURR', JSON.stringify(this.curr);
+      sessionStorage.setItem('historyfiles', JSON.stringify(this.historyfiles));
+
     }
   }
 
@@ -147,4 +163,22 @@ export class GpsInfoComponent implements OnInit {
     return val !== null;
   }
 
+  undo(): void {
+    this.filesNew = this.historyfiles[this.historyfiles.length - 2].files;
+    this.largeName = this.historyfiles[this.historyfiles.length - 2].largeName;
+
+    sessionStorage.setItem('newfiles', JSON.stringify(this.filesNew));
+    sessionStorage.setItem('largeName', JSON.stringify(this.largeName));
+    sessionStorage.setItem('HISTORYFILESCURR', JSON.stringify(this.historyfiles.length - 2));
+  }
+
+  redo(): void {
+    this.curr = this.curr + 1;
+    this.filesNew = this.historyfiles[this.curr].files;
+    this.largeName = this.historyfiles[this.curr].largeName;
+
+    sessionStorage.setItem('newfiles', JSON.stringify(this.filesNew));
+    sessionStorage.setItem('largeName', JSON.stringify(this.largeName));
+    sessionStorage.setItem('HISTORYFILESCURR', JSON.stringify(this.curr));
+  }
 }
