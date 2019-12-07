@@ -56,23 +56,25 @@ export class GpsInfoComponent implements OnInit {
       let newStringPart = '';
       let indexN = 0;
 
-
-      if (file.geoLocation) {
-        for (let i = 0; i < indexNew; i++) {
-          if (this.isItemInStorage(i)) {
-            if (this.largeName[i] === 'Latitude') {
-              indexN += file.geoLocation.latitude.length;
-            } else if (this.largeName[i] === 'Longitude') {
-              indexN += file.geoLocation.longitude.length;
-            } else if (this.largeName[i] === 'City') {
-              indexN += file.geoLocation.city.length;
-            } else if (this.largeName[i] === 'Country') {
-              indexN += file.geoLocation.country.length;
-            }
+      for (let i = 0; i < indexNew; i++) {
+        if (this.isItemInStorage(i)) {
+          if (this.largeName[i] === 'Latitude' ) {
+            indexN += file.geoLocation ? file.geoLocation.latitude.length : 0;
+          } else if (this.largeName[i] === 'Longitude') {
+            indexN += file.geoLocation ? file.geoLocation.longitude.length : 0;
+          } else if (this.largeName[i] === 'City') {
+            indexN += file.geoLocation ? file.geoLocation.city.length : 0;
+          } else if (this.largeName[i] === 'Country') {
+            indexN += file.geoLocation ? file.geoLocation.country.length : 0;
           } else {
             indexN += this.largeName[i].length;
           }
+        } else {
+          indexN += this.largeName[i].length;
         }
+      }
+
+      if (file.geoLocation) {
 
         if (newString[indexOld] === 'Latitude') {
           newStringPart = file.geoLocation.latitude;
