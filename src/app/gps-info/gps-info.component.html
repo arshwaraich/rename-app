@@ -3,8 +3,8 @@
     <div class="builder-header">
       <div class="header-text">Filename Builder</div>
       <div class="header-icons">
-        <mat-icon [ngClass]="{'active': historyfiles.length > 1, 'inactive': historyfiles.length <= 1}" (click)="undo()">undo</mat-icon>
-        <mat-icon [ngClass]="{'active': historyfiles.length - 1 > curr, 'inactive': historyfiles.length - 1 <= curr}" (click)="undo()">redo</mat-icon>
+        <mat-icon [ngClass]="{'active': curr > 0, 'inactive': curr <= 0}" (click)="undo()">undo</mat-icon>
+        <mat-icon [ngClass]="{'active': historyfiles.length - 1 > curr, 'inactive': historyfiles.length - 1 <= curr}" (click)="redo()">redo</mat-icon>
       </div>
     </div>
     <div class="builder-body">

@@ -18,6 +18,8 @@ export class StringComponent implements OnInit {
   // arrays of mock objects
   filesOld = [];
   filesNew = [];
+  historyfiles = [];
+  curr = 0;
 
   // Chars to display in the original container in drag and drop
   largeName = [];
@@ -25,21 +27,6 @@ export class StringComponent implements OnInit {
   // Chars to display in the potential strings container in drag and drop
   Strings = [];
   str: string;
-
-  // look for largest name in the old filesname list
-  // go through that name and put into the array letter by letter
-  largestName() {
-    this.largeName = [];
-    let largestFileName = this.filesOld[0].name;
-    for (const file of this.filesOld) {
-      if (largestFileName.length < file.name.length) {
-        largestFileName = file.name;
-      }
-    }
-    for (const char of largestFileName) {
-      this.largeName.push(char);
-    }
-  }
 
   ngOnInit() {
     this.filesOld = JSON.parse(sessionStorage.getItem('newfiles'));
@@ -50,10 +37,8 @@ export class StringComponent implements OnInit {
       }
     }
     this.largeName = JSON.parse(sessionStorage.getItem('largeName'));
-    if (!this.largeName) {
-      this.largestName();
-      sessionStorage.setItem('largeName', JSON.stringify(this.largeName));
-    }
+    this.historyfiles = JSON.parse(sessionStorage.getItem('historyfiles'));
+    this.curr = JSON.parse(sessionStorage.getItem('HISTORYFILESCURR'));
   }
 
 
@@ -92,7 +77,6 @@ export class StringComponent implements OnInit {
       file.name = fullString;
       console.log(file.name);
     }
-    sessionStorage.setItem('newfiles', JSON.stringify(this.filesNew));
   }
 
 
@@ -131,7 +115,24 @@ export class StringComponent implements OnInit {
       ));
       console.log(tempPreviousData);
       this.largeName.splice(event.currentIndex, 0, tempPreviousData);
+
+      if ((this.historyfiles.length - 1) === this.curr) {
+        this.historyfiles.push({
+          files: this.filesNew,
+          largeName: this.largeName
+        });
+      } else {
+        this.historyfiles = this.historyfiles.splice(this.curr + 1);
+        this.historyfiles.push({
+          files: this.filesNew,
+          largeName: this.largeName
+        });
+      }
+      this.curr = this.historyfiles.length - 1;
+      sessionStorage.setItem('newfiles', JSON.stringify(this.filesNew));
       sessionStorage.setItem('largeName', JSON.stringify(this.largeName));
+      sessionStorage.setItem('HISTORYFILESCURR', JSON.stringify(this.curr));
+      sessionStorage.setItem('historyfiles', JSON.stringify(this.historyfiles));
     }
   }
 
@@ -140,4 +141,23 @@ export class StringComponent implements OnInit {
     return val !== null;
   }
 
+  undo(): void {
+    this.curr = this.curr - 1;
+    this.filesNew = this.historyfiles[this.curr].files;
+    this.largeName = this.historyfiles[this.curr].largeName;
+
+    sessionStorage.setItem('newfiles', JSON.stringify(this.filesNew));
+    sessionStorage.setItem('largeName', JSON.stringify(this.largeName));
+    sessionStorage.setItem('HISTORYFILESCURR', JSON.stringify(this.curr));
+  }
+
+  redo(): void {
+    this.curr = this.curr + 1;
+    this.filesNew = this.historyfiles[this.curr].files;
+    this.largeName = this.historyfiles[this.curr].largeName;
+
+    sessionStorage.setItem('newfiles', JSON.stringify(this.filesNew));
+    sessionStorage.setItem('largeName', JSON.stringify(this.largeName));
+    sessionStorage.setItem('HISTORYFILESCURR', JSON.stringify(this.curr));
+  }
 }
