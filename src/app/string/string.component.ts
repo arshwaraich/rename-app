@@ -60,14 +60,34 @@ export class StringComponent implements OnInit {
   updateNamesWithString(newString, indexOld, indexNew) {
     for (const file of this.filesNew) {
       let fullString = '';
-      if (indexNew > file.name.length) {
-        indexNew = file.name.length;
+      let indexN = 0;
+
+      for (let i = 0; i < indexNew; i++) {
+        if (this.isItemInStorage(i)) {
+          if (this.largeName[i] === 'Latitude' ) {
+            indexN += file.geoLocation ? file.geoLocation.latitude.length : 0;
+          } else if (this.largeName[i] === 'Longitude') {
+            indexN += file.geoLocation ? file.geoLocation.longitude.length : 0;
+          } else if (this.largeName[i] === 'City') {
+            indexN += file.geoLocation ? file.geoLocation.city.length : 0;
+          } else if (this.largeName[i] === 'Country') {
+            indexN += file.geoLocation ? file.geoLocation.country.length : 0;
+          } else {
+            indexN += this.largeName[i].length;
+          }
+        } else {
+          indexN += this.largeName[i].length;
+        }
       }
-      if (indexNew === 0) {
+
+      if (indexN > file.name.length) {
+        indexN = file.name.length;
+      }
+      if (indexN === 0) {
         fullString = newString[indexOld] + file.name.substr(0, file.name.length);
       } else {
-        fullString = file.name.substr(0, indexNew) + newString[indexOld] +
-          file.name.substr(indexNew, file.name.length);
+        fullString = file.name.substr(0, indexN) + newString[indexOld] +
+          file.name.substr(indexN, file.name.length);
       }
       file.name = fullString;
       console.log(file.name);
