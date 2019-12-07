@@ -14,8 +14,10 @@ export class AppComponent {
         name: 'apple',
         ext: 'jpg',
         geoLocation: {
-            longitude: '95.33276',
-            latitude: '7.43563',
+            longitude: '35.6895000',
+            latitude: '139.6917100',
+            city: 'Tokyo',
+            country: 'Japan'
         },
         size: {
             value: 80.0,
@@ -72,8 +74,10 @@ export class AppComponent {
           name: 'city',
           ext: 'jpg',
           geoLocation: {
-              longitude: '115.74803',
-              latitude: '31.03070'
+              longitude: '-79.4163000',
+              latitude: '43.7001100',
+              city: 'Toronto',
+              country: 'Canada'
           },
           size: {
               value: 800.3,

@@ -16,7 +16,7 @@ export class GpsInfoComponent implements OnInit {
   largeName = [];
 
   // Chars to display in the potential strings container in drag and drop
-  Strings = ['Latitude', 'Longitude'];
+  Strings = ['Latitude', 'Longitude', 'City', 'Country'];
   str: string;
 
   // look for largest name in the old filesname list
@@ -54,22 +54,44 @@ export class GpsInfoComponent implements OnInit {
     for (const file of this.filesNew) {
       let fullString = '';
       let newStringPart = '';
+      let indexN = 0;
+
 
       if (file.geoLocation) {
+        for (let i = 0; i < indexNew; i++) {
+          if (this.isItemInStorage(i)) {
+            if (this.largeName[i] === 'Latitude') {
+              indexN += file.geoLocation.latitude.length;
+            } else if (this.largeName[i] === 'Longitude') {
+              indexN += file.geoLocation.longitude.length;
+            } else if (this.largeName[i] === 'City') {
+              indexN += file.geoLocation.city.length;
+            } else if (this.largeName[i] === 'Country') {
+              indexN += file.geoLocation.country.length;
+            }
+          } else {
+            indexN += this.largeName[i].length;
+          }
+        }
+
         if (newString[indexOld] === 'Latitude') {
           newStringPart = file.geoLocation.latitude;
         } else if (newString[indexOld] === 'Longitude') {
           newStringPart = file.geoLocation.longitude;
+        } else if (newString[indexOld] === 'City') {
+          newStringPart = file.geoLocation.city;
+        } else if (newString[indexOld] === 'Country') {
+          newStringPart = file.geoLocation.country;
         }
 
-        if (indexNew > file.name.length) {
-          indexNew = file.name.length;
+        if (indexN > file.name.length) {
+          indexN = file.name.length;
         }
-        if (indexNew === 0) {
+        if (indexN === 0) {
           fullString = newStringPart + file.name.substr(0, file.name.length);
         } else {
-          fullString = file.name.substr(0, indexNew) + newStringPart +
-            file.name.substr(indexNew, file.name.length);
+          fullString = file.name.substr(0, indexN) + newStringPart +
+            file.name.substr(indexN, file.name.length);
         }
         file.name = fullString;
         console.log(file.name);
