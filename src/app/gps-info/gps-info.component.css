@@ -212,6 +212,7 @@
 }
 
 .DragArea>.builder-header>.header-icons>mat-icon {
+  cursor: not-allowed !important;
   color: #525252;
   font-size: 30px;
   height: 30px;
