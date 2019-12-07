@@ -11,17 +11,24 @@
 }
 
 .expanded {
-    padding: 32px;
-    height: calc(100% - 64px);
-    width: 70%;
+    padding: 14px 39px;
+    height: calc(100% - 28px);
+    width: calc(100% - 78px);
 }
 
 .nav-header > h1 {
     margin: 0px;
-    margin-left: 20px;
+    line-height: 135px;
     font-family: 'Dubai-regular';
-    font-size: 50px;
+    font-size: 80px;
     color: white;
+    letter-spacing: 10px;
+}
+
+.nav-items {
+    margin-top: 48px;
+    margin-bottom: 104px;
+    padding: 0px;
 }
 
 .nav-items, .nav-items a {
@@ -29,23 +36,37 @@
     color: rgba(255, 255, 255, 0.808);
     list-style-type: none;
     text-decoration: none;
-    font-size: 30px;
 }
 
-.nav-items a:hover {
+.nav-items li {
+    font-size: 32px;
+    padding-bottom: 33px;
+}
+
+.nav-items a:hover, .nav-items>li>.active {
     color: white;
+    font-weight: bold;
 }
 
 
-.nav-footer > button {
+.nav-footer button {
     background: white;
     border: none;
     border-radius: 100px;
     color: #636BFF;
 }
 
-#btn-preview {
-    font-size: 25px;
-    padding: 15px 50px 15px 50px;
-    margin-left: 10%;
+.nav-footer a {
+    text-decoration: none;
+}
+
+.btn-preview {
+    text-decoration: none;
+    cursor: pointer;
+    margin: auto;
+    display: block;
+    width: 319px;
+    height: 73px;
+    font-size: 32px;
+    line-height: 54px;
 }

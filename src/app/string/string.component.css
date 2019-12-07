@@ -1,0 +1,265 @@
+@font-face {
+  font-family: 'Dubai-regular';
+  src: url('../../assets/fonts/Dubai/DubaiW23-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Dubai-light';
+  src: url('../../assets/fonts/Dubai/DubaiW23-Light.ttf');
+  font-weight: 200;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 49px;
+}
+
+.flex-container .BuilderBackground {
+  text-align: center;
+  font-size: 10%;
+  background-color: white;
+  border-radius: 25px;
+  width: 100%;
+}
+
+.builder-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 18px 31px 0px;
+}
+
+.header-text {
+  font-family: 'Dubai-light';
+  font-weight: lighter;
+  font-size: 39px;
+  line-height: 66px;
+}
+
+.header-icons>mat-icon {
+  font-size: 40px;
+  width: 40px;
+  padding: 0px 20px;
+  height: 40px;
+}
+
+.header-icons>.active {
+  color: #525252;
+  cursor: pointer;
+}
+
+.header-icons>.inactive {
+  color: #C4C4C4;
+  cursor: not-allowed;
+}
+
+.builder-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  overflow-x: auto;
+}
+
+.filenameBuilder {
+  height: 87px;
+  background-color: #636BFF;
+  border-radius: 1000px;
+  display: flex;
+  flex-direction: row;
+  padding: 0px 25px;
+}
+
+.filenameBuilder>.example-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 58px;
+  font-family: 'Dubai-light';
+  padding: 0px 25px;
+  position: relative;
+}
+
+.filenameBuilder>.example-box-foreign {
+  background: white !important;
+  border-radius: 1000px !important;
+  color: #636bff !important;
+  border: 6px solid #636bff !important;
+}
+
+.example-box>.example-box-tooltip {
+  display: none;
+  position: absolute;
+  bottom: 120%;
+  background-color: #F3F3F3;
+  border-radius: 20px;
+  color: white;
+  z-index: 1;
+  width: 138px;
+  height: 80px;
+  cursor: default;
+}
+
+.example-box-tooltip>mat-icon {
+  color: #525252;
+  font-size: 40px;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+}
+
+.example-box-tooltip>mat-icon:hover {
+  color: red;
+}
+
+.example-box:hover>.example-box-tooltip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filenameBuilder .example-box>.example-box-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: calc(50% - 20px);
+  margin-left: 10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: #F3F3F3 transparent transparent transparent;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  margin-top: 5vw;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.builder-footer {
+  padding: 0px 37px 26px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.footer-icons {
+  position: relative;
+}
+
+.footer-icons>mat-icon {
+  font-size: 40px;
+  height: 40px;
+  width: 40px;
+  color: #C4C4C4;
+  cursor: pointer;
+}
+
+.footer-icons>.footer-icons-tooltip {
+  display: none;
+  position: absolute;
+  top: 100px;
+  right: -37px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  color: #525252;
+  z-index: 3;
+  width: 520px;
+  cursor: default;
+  padding: 30px;
+  font-family: 'Dubai-light';
+  font-size: 32px;
+  text-align: left;
+}
+
+.footer-icons:hover>.footer-icons-tooltip {
+  display: block;
+}
+
+.footer-icons>.footer-icons-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  right: 37px;
+  margin-left: 20px;
+  border-width: 20px;
+  border-style: solid;
+  border-color: transparent transparent #FFFFFF transparent;
+}
+
+.DragArea {
+  background-color: transparent !important;
+}
+
+.DragArea>.builder-header {
+  justify-content: flex-start !important;
+}
+
+.DragArea>.builder-header>.header-icons>mat-icon {
+  cursor: not-allowed !important;
+  color: #525252;
+  font-size: 30px;
+  height: 30px;
+  width: 30px;
+}
+
+.DragArea .filenameBuilder {
+  background: transparent;
+  padding: 0px;
+}
+
+.dragged-box {
+  background-color: white !important;
+  color: #636BFF !important;
+  border-radius: 1000px !important;
+  border: 6px solid #636BFF !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: move;
+  font-size: 58px;
+  font-family: 'Dubai-light';
+  padding: 0px 25px;
+  position: relative;
+}
+
+.DragArea .builder-body {
+  padding: 0px 31px;
+  justify-content: flex-start;
+}
+
+.DragArea .builder-body > input[type="text"] {
+  height: 70px;
+  border: none;
+  margin: 0px 27px;
+  border-radius: 1000px;
+  padding: 0px 37px;
+  line-height: 66px;
+  font-size: 39px;
+  color: #6C757D;
+  width: 300px;
+}
+
+.DragArea .builder-body mat-icon {
+  color: #B5B5B5;
+  font-size: 30px;
+  height: 30px;
+  width: 30px;
+  cursor: not-allowed;
+}

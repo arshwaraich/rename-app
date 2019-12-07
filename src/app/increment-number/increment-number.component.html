@@ -1,1 +1,72 @@
-<p>Incrementing Sequence</p>
+<div class="flex-container">
+  <div class="BuilderBackground">
+    <div class="builder-header">
+      <div class="header-text">Filename Builder</div>
+      <div class="header-icons">
+        <mat-icon [ngClass]="{'active': curr > 0, 'inactive': curr <= 0}" (click)="undo()">undo</mat-icon>
+        <mat-icon [ngClass]="{'active': historyfiles.length - 1 > curr, 'inactive': historyfiles.length - 1 <= curr}"
+          (click)="redo()">redo</mat-icon>
+      </div>
+    </div>
+    <div class="builder-body">
+      <div cdkDropList #initialList="cdkDropList" cdkDropListOrientation="horizontal" [cdkDropListData]="largeName"
+        class="filenameBuilder" (cdkDropListDropped)="drop($event)">
+        <div [ngClass]="{'example-box': true, 'example-box-foreign': isItemInStorage(i)}"
+          *ngFor="let item of largeName; let i = index" [attr.data-index]="i" cdkDrag cdkDragDisabled>
+          {{item}}
+          <span class="example-box-tooltip">
+            <mat-icon style="cursor: not-allowed;">delete</mat-icon>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="builder-footer">
+      <div class="footer-icons">
+        <mat-icon>info</mat-icon>
+        <span class="footer-icons-tooltip">
+          Drag and drop elements between
+          characters to build new filename.
+          Click on elements for more
+          options.
+          This is a sample filename which
+          is equal in size to the largest
+          filename
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="BuilderBackground DragArea">
+    <div class="builder-header">
+      <div class="header-text">Incrementing Sequence</div>
+      <div class="header-icons">
+        <mat-icon>info</mat-icon>
+      </div>
+    </div>
+
+    <div class="builder-body">
+      <div *ngIf="Strings[0]" cdkDropList #stringsList="cdkDropList" cdkDropListOrientation="horizontal"
+        [cdkDropListData]="Strings" [cdkDropListConnectedTo]="[initialList]" class="filenameBuilder"
+        (cdkDropListDropped)="drop($event)">
+        <div [ngClass]="{'example-box': true,  'dragged-box' : (startNum >= 0 && startNum <= 1000 && ((maxDigits >= 1 && maxDigits <= 10) || (maxDigits !== 0 && !maxDigits)) && incrementSize >= 1 && incrementSize <= 1000), 'undragged-box' : !(startNum >= 0 && startNum <= 1000 && ((maxDigits >= 1 && maxDigits <= 10) || (maxDigits !== 0 && !maxDigits)) && incrementSize >= 1 && incrementSize <= 1000)}" *ngFor="let item of Strings; let i = index" [attr.data-index]="i" cdkDrag [cdkDragDisabled]="!(startNum >= 0 && startNum <= 1000 && ((maxDigits >= 1 && maxDigits <= 10) || (maxDigits !== 0 && !maxDigits)) && incrementSize >= 1 && incrementSize <= 1000)">
+          {{item}}
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="input-fields">
+          <input placeholder="Start Number" max="1000" min="0" type="number" [(ngModel)]="startNum">
+          <mat-icon>info</mat-icon>
+        </div>
+        <div class="input-fields">
+          <input placeholder="Max. Digits"  max="10" min="1"  type="number" [(ngModel)]="maxDigits">
+          <mat-icon>info</mat-icon>
+        </div>
+        <div class="input-fields">
+          <input placeholder="Increment Size" max="1000" min="1" type="number" [(ngModel)]="incrementSize">
+          <mat-icon>info</mat-icon>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
