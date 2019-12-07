@@ -10,8 +10,14 @@
 <div class="blanket" *ngIf="!(isFullScreen && isRightScale)">
   <div class="popup">
     <h1>Hëlp!</h1>
-    <p *ngIf=!isRightScale>Please zoom {{scale > 100 ? 'out' : 'in'}} to 100% (Currently {{scale}}%)</p>
-    <p *ngIf="!isFullScreen">Please make your window fullscreen</p>
-    <button (click)="goFullScreen()" [disabled]="isFullScreen">Fullscreen</button>
+    <div *ngIf="checkBrowser() !== 'Chrome'">
+      <p>Browser not supported :(</p>
+      <p>Switch to <a href="https://google.com/chrome/">Chrome</a></p>
+    </div>
+    <div *ngIf="checkBrowser() === 'Chrome'">
+      <p *ngIf="!isRightScale">Please zoom {{scale > 100 ? 'out' : 'in'}} to 100% (Currently {{scale}}%)</p>
+      <p *ngIf="!isFullScreen">Please make your window fullscreen</p>
+      <button (click)="goFullScreen()" [disabled]="isFullScreen">Fullscreen</button>
+    </div>
   </div>
 </div>
