@@ -1,8 +1,17 @@
-<div class="parent">
+<div class="parent" *ngIf="isFullScreen && isRightScale">
   <div class="div1">
     <app-side-menu></app-side-menu>
   </div>
   <div class="div2">
     <router-outlet></router-outlet>
+  </div>
+</div>
+
+<div class="blanket" *ngIf="!(isFullScreen && isRightScale)">
+  <div class="popup">
+    <h1>Hëlp!</h1>
+    <p *ngIf=!isRightScale>Please zoom {{scale > 100 ? 'out' : 'in'}} to 100% (Currently {{scale}}%)</p>
+    <p *ngIf="!isFullScreen">Please make your window fullscreen</p>
+    <button (click)="goFullScreen()" [disabled]="isFullScreen">Fullscreen</button>
   </div>
 </div>
