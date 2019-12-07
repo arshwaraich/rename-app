@@ -136,19 +136,21 @@ export class AppComponent implements OnInit {
     );
   }
 
+  checkDesktop() {
+    return this.deviceDetectorService.isDesktop();
+  }
+
   checkBrowser() {
-    return this.deviceDetectorService.browser;
+    return this.deviceDetectorService.browser === 'MS-Edge' ||
+          this.deviceDetectorService.browser === 'Firefox' ||
+          this.deviceDetectorService.browser === 'Chrome';
   }
 
   checkIfFullScreen() {
     this.scale = window.devicePixelRatio * 100;
     this.isRightScale = (this.scale === 100);
-    if (this.checkBrowser() === 'Chrome') {
-        if (this.isRightScale) {
-          this.isFullScreen = (window.innerHeight * 0.8 === screen.height);
-        } else {
-          this.isFullScreen = (window.innerHeight === screen.height);
-        }
+    if (this.checkBrowser()) {
+        this.isFullScreen = (document.fullscreenElement !== null);
     }
   }
 
