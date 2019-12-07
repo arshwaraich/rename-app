@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'rename-app';
+
+  isFullScreen = false;
+  isRightScale = false;
+  scale = 100;
 
   constructor() {
     // * hard-coded original file
@@ -87,7 +91,7 @@ export class AppComponent {
           lastModifiedTimeStamp: '1571998812'
       }];
 
-    let largeName = [];
+    const largeName = [];
     let largestFileName = ogFiles[0].name;
     for (const file of ogFiles) {
       if (largestFileName.length < file.name.length) {
@@ -98,7 +102,7 @@ export class AppComponent {
       largeName.push(char);
     }
 
-    let historyfiles = [];
+    const historyfiles = [];
     historyfiles.push({
         files: ogFiles,
         largeName
@@ -112,4 +116,31 @@ export class AppComponent {
     }
     sessionStorage.setItem('files', JSON.stringify(ogFiles));
   }
+
+  ngOnInit() {
+    this.keepChecking();
+  }
+
+  keepChecking() {
+      setInterval(
+          this.checkIfFullScreen.bind(this),
+          500
+      );
+  }
+
+  checkIfFullScreen() {
+    this.scale = window.devicePixelRatio * 100;
+    this.isRightScale = (this.scale === 100);
+    if (this.isRightScale) {
+        this.isFullScreen = (window.innerHeight * 0.8 === screen.height);
+    } else {
+        this.isFullScreen = (window.innerHeight === screen.height);
+    }
+  }
+
+  goFullScreen() {
+    document.documentElement.requestFullscreen();
+  }
+
+
 }

@@ -2,11 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { StringComponent } from './string/string.component';
-import { FileDataComponent } from './file-data/file-data.component';
 import { GpsInfoComponent } from './gps-info/gps-info.component';
-import { DateComponent } from './date/date.component';
 import { IncrementNumberComponent } from './increment-number/increment-number.component';
-import { OriginalNameComponent } from './original-name/original-name.component';
 
 import { PreviewBigComponent } from './preview-big/preview-big.component';
 
@@ -14,11 +11,11 @@ import { PreviewBigComponent } from './preview-big/preview-big.component';
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/preview'},
   {path: 'string', component: StringComponent},
-  {path: 'fileData', component: FileDataComponent},
+  {path: 'fileData', redirectTo: '/preview'},
   {path: 'gps-info', component: GpsInfoComponent},
-  {path: 'date', component: DateComponent},
+  {path: 'date', redirectTo: '/preview'},
   {path: 'incrementNumber', component: IncrementNumberComponent},
-  {path: 'originalName', component: OriginalNameComponent},
+  {path: 'originalName', redirectTo: '/preview'},
   {path: 'preview', component: PreviewBigComponent}
 ];
 
