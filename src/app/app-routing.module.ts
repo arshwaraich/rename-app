@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
 import { StringComponent } from './string/string.component';
 import { FileDataComponent } from './file-data/file-data.component';
 import { GpsInfoComponent } from './gps-info/gps-info.component';
