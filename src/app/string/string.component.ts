@@ -122,7 +122,7 @@ export class StringComponent implements OnInit {
           largeName: this.largeName
         });
       } else {
-        this.historyfiles = this.historyfiles.splice(this.curr + 1);
+        this.historyfiles.splice(this.curr + 1);
         this.historyfiles.push({
           files: this.filesNew,
           largeName: this.largeName
