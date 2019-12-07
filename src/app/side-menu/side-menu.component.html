@@ -4,17 +4,17 @@
   </div>
   <ul class="nav-items">
     <li><a [ngClass]="{'active':router.url === '/string'}" routerLink="/string">String</a></li>
-    <li><a [ngClass]="{'active':router.url === '/fileData'}" routerLink="/fileData"> File Data </a></li>
+    <li><a style="cursor: not-allowed;" [ngClass]="{'active':router.url === '/fileData'}"> File Data </a></li>
     <li><a [ngClass]="{'active':router.url === '/gps-info'}" routerLink="/gps-info"> GPS Information </a></li>
-    <li><a [ngClass]="{'active':router.url === '/date'}" routerLink="/date"> Date </a></li>
+    <li><a style="cursor: not-allowed;" [ngClass]="{'active':router.url === '/date'}"> Date </a></li>
     <li><a [ngClass]="{'active':router.url === '/incrementNumber'}" routerLink="/incrementNumber"> Incrementing Number </a></li>
-    <li><a [ngClass]="{'active':router.url === '/originalName'}" routerLink="/originalName"> Original Name </a></li>
+    <li><a style="cursor: not-allowed;" [ngClass]="{'active':router.url === '/originalName'}"> Original Name </a></li>
   </ul>
   <div class="nav-footer">
     <a routerLink="/preview">
       <button class="btn-preview" *ngIf="router.url !== '/preview'">Preview</button>
     </a>
-    <button class="btn-preview" *ngIf="router.url === '/preview'">Save</button>
+    <button style="cursor: not-allowed;" class="btn-preview" *ngIf="router.url === '/preview'">Save</button>
     <!--Add icon here later-->
   </div>
 </div>
